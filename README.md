@@ -20,11 +20,11 @@ There are lots of lexical environments, areas of the code that you look at physi
 Execution context contains your running code, but it can also contain things beyond what you've written in your code. Because remember that your code is being translated by a syntax parser. 
  
 ## 6 - Conceptual Aside - Name-Value Pairs and Objects
-Name value pair - a name which maps to a unique value. The name may be defined more than once, but can only have one value in any given execution context.
+**Name value pair** - a name which maps to a unique value. The name may be defined more than once, but can only have one value in any given execution context.
 **Object** - is a collection of name value pairs. 
  
 ## 7 - The Global Environment and The Global Object
-**Global execution context* is the base execution context. It creates global object and special variable called `this`. In a browser `this` global object is `window`.
+**Global execution context** - the base execution context. It creates global object and special variable called `this`. In a browser `this` global object is `window`.
 
 ## 8 - The Execution Context - Creation & Hoisting
 **Hoisting** - because of the way JS works, you can write in your code a call to a function before an actual function and it will execute without any errors. 
@@ -37,9 +37,8 @@ function b() {
 }
 ```
 
-This is how it works. 
-When parser runs through code it recognizes where you created variables and functions and it sets up memory space for them.
-So before your code begins to be executed, JS engine has already set aside memory space for all the variables and functions you created. So when the code begins to execute line by line it can access it.
+This is how it works.
+When parser runs through code it recognizes where you created variables and functions and it sets up memory space for them. So before your code begins to be executed, JS engine has already set aside memory space for all the variables and functions you created. So when the code begins to execute line by line it can access it.
 However, for variables JS engine puts a placeholder `undefined`, because it doesn't know what it's value will ultimately end up being until it starts executing that line of
 code. 
  
@@ -50,7 +49,7 @@ var a = 'Hello World!';
 ```
 
 ## 9 - Conceptual Aside - Javascript and undefined
-**Undefined** - is a special value, a keyword that JavaScript sets up to all variables during a creation phase of execution context. 
+`undefined` - is a special value, a keyword that JavaScript sets up to all variables during a creation phase of execution context. 
 
 ## 10 - The Execution Context - Code Execution
 In the execution phase JS engine runs your code line by line. 
@@ -71,7 +70,7 @@ In the execution phase JS engine runs your code line by line.
 ## 14 - The Scope Chain
 If JavaScript engine doesn't find variable in it's own environment it looks in the outer environment. That whole process of searching of variable in outer lexical environments down the chain is called the **scope chain**.
 
-So in this example myVar would actualy log "1" even though it sits inside a function which is inside another. myVar sits in the outer global environment so JS will go down the scope chain until it finds it.
+So in this example `myVar` would actualy log `1` even though it sits inside a function which is inside another. `myVar` sits in the outer global environment so JS will go down the scope chain until it finds it.
 
 ```javascript
 function a() {
@@ -104,9 +103,9 @@ Scope is where a variable is available in your code. And if it's truly a new var
 `undefined` - represents lack of existence. You shouldn't set a variable to `undefined` yourself.
 `null` - also represents lack of existence. You can set a variable to `null`.
 `boolean` - `true` or `false`.
-**Number** - floating point number (there's always some decimals)
+**Number** - floating point number (there's always some decimals).
 `string` - a sequence of characters in 'single' or "double quotes".
-**Symbol** - used in ES6. 
+**Symbol** - used in ES6.
 
 ## 19 - Conceptual Aside - Operators
 **Operator** - a special function that is written differently. Generally operators take two parameters and return result.
