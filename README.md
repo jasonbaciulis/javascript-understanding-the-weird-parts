@@ -185,7 +185,7 @@ Primitives:
 - `null` - also represents lack of existence. You can set a variable to `null`.
 - `boolean` - `true` or `false`.
 - **Number** - floating point number (there's always some decimals).
-- `string` - a sequence of characters in 'single' or "double quotes".
+- **String** - a sequence of characters in 'single' or "double quotes".
 - **Symbol** - used in ES6.
 
 ## 19 - Conceptual Aside - Operators
@@ -451,7 +451,7 @@ Every time function is called it creates a new execution context and its variabl
 ## 46 - `call()`, `apply()`, and `bind()`
 Because functions are objects, all functions have access to built-in `call()`, `bind()` and `apply()` methods.
 
-`bind()` creates a copy of a function it is attached to. I.e `name.bind(obj)` inherits `this` from the object you pass to it as a parameter. `bind()` can also bind permanent parameters to the function: `name.bind(this, 1, 2)`. So when you call `name()` it will have parameters `1` and `2` already passed.
+`bind()` creates a copy of a function it is attached to. E.g. `name.bind(obj)` inherits `this` from the object you pass to it as a parameter. `bind()` can also bind permanent parameters to the function: `name.bind(this, 1, 2)`. So when you call `name()` it will have parameters `1` and `2` already passed.
 
 `call()` invokes the function but also lets you to decide what `this` variable will be, by passing an object: `call(object, 'param', 'param2')`. Unlike bind, it executes the function instead of copying it.
 
@@ -524,35 +524,128 @@ A `.prototype` is **not** *the* prototype of a function object. It is only a pro
 It's better to put your methods on the `prototype` to save memory space as it gets shared between all objects.
 
 ## 55 - Dangerous Aside `new` and functions
+Any function that we intend to use as a function constructor should be named with a first capital letter. This makes it easier to spot errors in case you would miss `new` keyword.
+
+Although worth mentioning that creating objects with function constructors is going away because of new methods and ES6.
 
 ## 56 - Conceptual Aside Built-In Function Constructors
+JavaScript has some built it function constructors like: `new Number(3)` and `new String('Jason')`.
+
+These constructors look like you're creating primitives but you are not. You are creating objects.
+
+When you use some methods like `.length` on a string, your string is boxed in a `String` object automatically to get access to all its methods.
+ 
+Although it doesn't work like that for numbers and you would need to create `Number` object first.
+
+All these built-in function constructors have a prototype and you can actually add your own methods to it.
+
+```javascript
+String.prototype.isLengthGreaterThan = function(limit) {
+    return this.length > limit;  
+}
+
+console.log("John".isLengthGreaterThan(3));
+```
 
 ## 57 - Dangerous Aside Built-In Function Constructors 2
+It's best to avoid using built-in function constructors to create primitives because you're not creating primitives but rather objects.
+
+```javascript
+var a = 3;
+var b = new Number(3);
+
+a == b // will return true because of coersion
+a === b // will return false because we are comparing object with a primitive
+```
 
 ## 58 - Dangerous Aside Arrays and `for`..`in`
+For arrays use standard `for` loop or `forEach`, but don't use `for in`. Because arrays are objects with `for in` you could iterate into a prototype.
 
 ## 59 - `Object.create` and Pure Prototypal Inheritance
+```javascript
+var person = {
+    firstname: 'Default',
+    lastname: 'Default',
+    greet: function() {
+        return 'Hi ' + this.firstname;   
+    }
+}
+
+var john = Object.create(person);
+```
+
+`Object.create(person)` - creates an empty object with its prototype pointing at whatever you passed in as a parameter.
+
+```javascript
+john.firstname = 'John';
+john.lastname = 'Doe';
+```
+
+And you can override properties and methods by adding new ones to this object with the same names.
+
+**Polyfill** - code that adds a feature which the engine may lack.
 
 ## 60 - ES6 and Classes
+JavaScript has classes in ES6. However, it is not like a `class` in other languages. In other languages `class` is like a template. `class` in JS is an object by itself that you use to create other objects.
+
+`class` doesn't change anything how objects and prototypes work under the hood. It just gives you a different way to type. Because of it you may hear JavaScript classes being called syntactic sugar.
+
+**Syntactic sugar** - a different way to type something that doesn't change how it works under the hood.
 
 ## 61 - Initialization
-Large arrays of objects is useful for testing and initialization
+Large arrays of objects are useful for testing and initialization before you have an actual data like a JSON file.
 
 ## 62 - `typeof`, `instanceof`, and Figuring Out What Something Is
-typeof returns a type of variable
-array is returned as an object
-e instanceof Person - return true if e is down the prototype chain
-typeof null returns an object - it's a bug
+`typeof` is an operator (essentially a function) that excepts a parameter and returns a string.
+
+`instanceof` will tell you if it has something in its prototype chain by returning a boolean.
+
+```javascript
+var a = 3;
+console.log(typeof a); // returns a string 'number'
+
+var b = "Hello";
+console.log(typeof b); // returns a string 'string'
+
+var c = {};
+console.log(typeof c); // returns a string 'object'
+
+var d = [];
+console.log(typeof d); // also returns a string 'object', weird!
+
+console.log(Object.prototype.toString.call(d)); // this little trick returns a string '[object Array]'
+
+function Person(name) {
+    this.name = name;
+}
+var e = new Person('Jane');
+console.log(typeof e); // also an object
+
+console.log(e instanceof Person); // returns true because Person is down the prototype chain of e
+
+console.log(typeof undefined); // returns undefined, makes sense
+console.log(typeof null); // returns an 'object', a bug since, like, forever... 
+
+var z = function() { };
+console.log(typeof z); // returns a 'function'
+```
 
 ## 63 - Strict Mode
-"use strict"; - in this mode you must declare var first to use it. In not strict mode if you forget to type var, it will still be created on global object window.
-You can use use strict at the top of the document or at the top of a function to use strict only inside it's execution context
+JavaScript is a more liberal of what it allows.
+
+`"use strict";` - enforces more strict rules. E.g. in this mode you must declare var first to use it. In not strict mode if you forget to type `var`, it will still be created on the global object `window`.
+
+You can use use strict at the top of the document or at the top of a function to use strict only inside it's execution context.
 
 ## 64 - Learning From Other's Good Code
-Reading good open source code of libraries and apps you're using is valuable way of learning.
+There are many aspects of improving as a developer. One of the most powerful is learning from other's good code. There is a fantastic treasure trove of good code out there to learn from. Tony calls it "an open source education".
+
+It may sound as fun as reading an encyclopedia, but you don't need to spend hours reading the source code. Find some area that's interesting to you. Don't get intimidated by famous libraries and what may seems complex patterns. Look at the structure, see what you could take away and imitate.
+
+This is a great way to learn advanced patterns and concepts in JavaScript. So make a practice to occasionally look at the source code of the library or framework you're using.
 
 ## 65 - Deep Dive into Source Code jQuery - Part 1
-jQuery has some good code you could borrows for your own projects. I has been developed and watched by many developers so it probably has some of the best methods and practices.
+jQuery has some good code you could borrow for your own projects. I has been developed and watched by many developers so it probably has some of the best methods and practices.
 
 ## 66 - Deep Dive into Source Code jQuery - Part 2
 
