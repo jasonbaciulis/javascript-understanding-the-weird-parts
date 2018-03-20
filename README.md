@@ -1,6 +1,85 @@
-
 # JavaScript: Understanding the Weird Parts
 These are my notes from the briliant course by Tony Alicea about learning in-depth JavaScript. If you want to learn how JavaScript engine works under the hood I highly recommend you to check out this course which you can find at [Udemy](https://www.udemy.com/understand-javascript/).
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Define goals of success](#define-goals-of-success)
+- [5 - Conceptual Aside - Syntax Parser, Execution Context, and Lexical Environment](#5---conceptual-aside---syntax-parser-execution-context-and-lexical-environment)
+- [6 - Conceptual Aside - Name-Value Pairs and Objects](#6---conceptual-aside---name-value-pairs-and-objects)
+- [7 - The Global Environment and The Global Object](#7---the-global-environment-and-the-global-object)
+- [8 - The Execution Context - Creation & Hoisting](#8---the-execution-context---creation--hoisting)
+- [9 - Conceptual Aside - Javascript and undefined](#9---conceptual-aside---javascript-and-undefined)
+- [10 - The Execution Context - Code Execution](#10---the-execution-context---code-execution)
+- [11 - Conceptual Aside - Single Threaded, Synchronous Execution](#11---conceptual-aside---single-threaded-synchronous-execution)
+- [12 - Function Invocation and the Execution Stack](#12---function-invocation-and-the-execution-stack)
+- [13 - Functions, Context, and Variable Environments](#13---functions-context-and-variable-environments)
+- [14 - The Scope Chain](#14---the-scope-chain)
+- [15 - Scope, ES6, and `let`](#15---scope-es6-and-let)
+- [16 - What About Asynchronous Callbacks](#16---what-about-asynchronous-callbacks)
+- [17 - Conceptual Aside Types And Operators](#17---conceptual-aside-types-and-operators)
+- [18 - Primitive Types](#18---primitive-types)
+- [19 - Conceptual Aside - Operators](#19---conceptual-aside---operators)
+- [20 - Operator Precedence and Associativity](#20---operator-precedence-and-associativity)
+- [21 - Conceptual Aside Coercion](#21---conceptual-aside-coercion)
+- [22 - Comparison Operators](#22---comparison-operators)
+- [23 - Existence and Booleans](#23---existence-and-booleans)
+- [24 - Default Values](#24---default-values)
+- [25 - Framework Aside: Default Values](#25---framework-aside-default-values)
+- [26 - Objects and the Dot](#26---objects-and-the-dot)
+- [27 - Objects and Object Literals](#27---objects-and-object-literals)
+- [28 - Framework Aside: Faking Namespaces](#28---framework-aside-faking-namespaces)
+- [29 - JSON and Object Literals](#29---json-and-object-literals)
+- [30 - Functions are Objects](#30---functions-are-objects)
+- [31 - Function Statements and Function Expressions](#31---function-statements-and-function-expressions)
+- [32 - Conceptual Aside By Value vs By Reference](#32---conceptual-aside-by-value-vs-by-reference)
+- [33 - Objects, Functions, and `this`](#33---objects-functions-and-this)
+- [34 - Conceptual Aside - Arrays  - Collections of Anything](#34---conceptual-aside---arrays----collections-of-anything)
+- [35 - `arguments` and spread](#35---arguments-and-spread)
+- [36 - Framework Aside Function Overloading](#36---framework-aside-function-overloading)
+- [37 - Conceptual Aside  - Syntax Parsers](#37---conceptual-aside----syntax-parsers)
+- [38 - Dangerous Aside Automatic Semicolon Insertion](#38---dangerous-aside-automatic-semicolon-insertion)
+- [39 - Framework Aside Whitespace](#39---framework-aside-whitespace)
+- [40 - Immediately Invoked Functions Expressions (IIFEs)](#40---immediately-invoked-functions-expressions-iifes)
+- [41 - Framework Aside IIFEs and Safe Code](#41---framework-aside-iifes-and-safe-code)
+- [42 - Understanding Closures](#42---understanding-closures)
+- [43 - Understanding Closures Pt. 2](#43---understanding-closures-pt-2)
+- [44 - Framework Aside Function Factories](#44---framework-aside-function-factories)
+- [45 - Closures And Callbacks](#45---closures-and-callbacks)
+- [46 - `call()`, `apply()`, and `bind()`](#46---call-apply-and-bind)
+- [47 - Functional Programming](#47---functional-programming)
+- [48 - Functional Programming Pt. 2](#48---functional-programming-pt-2)
+- [49 - Conceptual Aside Classical vs Prototypal Inheritance](#49---conceptual-aside-classical-vs-prototypal-inheritance)
+- [50 - Understanding The Prototype](#50---understanding-the-prototype)
+- [51 - Everything is an Object (Or a primitive)](#51---everything-is-an-object-or-a-primitive)
+- [52 - Reflection and Extend](#52---reflection-and-extend)
+- [53 - Functions Contructors, `new` And The History Of JavaScript](#53---functions-contructors-new-and-the-history-of-javascript)
+- [54 - Function Constructors and `.prototype`](#54---function-constructors-and-prototype)
+- [55 - Dangerous Aside `new` and functions](#55---dangerous-aside-new-and-functions)
+- [56 - Conceptual Aside Built-In Function Constructors](#56---conceptual-aside-built-in-function-constructors)
+- [57 - Dangerous Aside Built-In Function Constructors 2](#57---dangerous-aside-built-in-function-constructors-2)
+- [58 - Dangerous Aside Arrays and `for`..`in`](#58---dangerous-aside-arrays-and-forin)
+- [59 - `Object.create` and Pure Prototypal Inheritance](#59---objectcreate-and-pure-prototypal-inheritance)
+- [60 - ES6 and Classes](#60---es6-and-classes)
+- [61 - Initialization](#61---initialization)
+- [62 - `typeof`, `instanceof`, and Figuring Out What Something Is](#62---typeof-instanceof-and-figuring-out-what-something-is)
+- [63 - Strict Mode](#63---strict-mode)
+- [64 - Learning From Other's Good Code](#64---learning-from-others-good-code)
+- [65 - Deep Dive into Source Code jQuery - Part 1](#65---deep-dive-into-source-code-jquery---part-1)
+- [66 - Deep Dive into Source Code jQuery - Part 2](#66---deep-dive-into-source-code-jquery---part-2)
+- [67 - Deep Dive into Source Code jQuery - Part 3](#67---deep-dive-into-source-code-jquery---part-3)
+- [68 - Requirements](#68---requirements)
+- [69 - Structuring Safe Code](#69---structuring-safe-code)
+- [70 - Our Object and Its Prototype](#70---our-object-and-its-prototype)
+- [71 - Properties and Chainable Methods](#71---properties-and-chainable-methods)
+- [72 - Adding jQuery Support](#72---adding-jquery-support)
+- [73 - Good Commenting](#73---good-commenting)
+- [74 - A Side Note](#74---a-side-note)
+- [76 - TypeScript, ES6, and Transpiled Languages](#76---typescript-es6-and-transpiled-languages)
+- [77 - Existing and Upcoming Features](#77---existing-and-upcoming-features)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Define goals of success
 1. Be able to read jQuery source code and able to understand what is happening.
@@ -100,17 +179,14 @@ a();
 ## 18 - Primitive Types
 **Primitive type** - a type of data that represents a single value. That is, not an object.
 
-`undefined` - represents lack of existence. You shouldn't set a variable to `undefined` yourself.
+Primitives:
 
-`null` - also represents lack of existence. You can set a variable to `null`.
-
-`boolean` - `true` or `false`.
-
-**Number** - floating point number (there's always some decimals).
-
-`string` - a sequence of characters in 'single' or "double quotes".
-
-**Symbol** - used in ES6.
+-- `undefined` - represents lack of existence. You shouldn't set a variable to `undefined` yourself.
+-- `null` - also represents lack of existence. You can set a variable to `null`.
+-- `boolean` - `true` or `false`.
+-- **Number** - floating point number (there's always some decimals).
+-- `string` - a sequence of characters in 'single' or "double quotes".
+-- **Symbol** - used in ES6.
 
 ## 19 - Conceptual Aside - Operators
 **Operator** - a special function that is written differently. Generally operators take two parameters and return result.
