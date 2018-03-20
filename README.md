@@ -77,7 +77,6 @@ These are my notes from the briliant course by [Tony Alicea](https://twitter.com
 - [73 - Good Commenting](#73---good-commenting)
 - [74 - A Side Note](#74---a-side-note)
 - [76 - TypeScript, ES6, and Transpiled Languages](#76---typescript-es6-and-transpiled-languages)
-- [77 - Existing and Upcoming Features](#77---existing-and-upcoming-features)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -593,7 +592,7 @@ JavaScript has classes in ES6. However, it is not like a `class` in other langua
 **Syntactic sugar** - a different way to type something that doesn't change how it works under the hood.
 
 ## 61 - Initialization
-Large arrays of objects are useful for testing and initialization before you have an actual data like a JSON file.
+Large arrays of objects are useful for testing and initialization before you have an actual data to pull from, like a JSON file.
 
 ## 62 - `typeof`, `instanceof`, and Figuring Out What Something Is
 `typeof` is an operator (essentially a function) that excepts a parameter and returns a string.
@@ -666,5 +665,8 @@ jQuery has some good code you could borrow for your own projects. I has been dev
 ## 74 - A Side Note
 
 ## 76 - TypeScript, ES6, and Transpiled Languages
+**Transpile** - convert the syntax of one programming language, to another.
 
-## 77 - Existing and Upcoming Features
+In this case, languages that don't really ever run anywhere, but instead are processed by transpilers that generate JavaScript.
+
+**TypeScript** - one of the most popular transpiled languages and is created by Microsoft. The biggest difference that it uses strict types for its variables instead of dynamic types like JavaScript.
