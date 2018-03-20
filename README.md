@@ -86,8 +86,8 @@ var myVar = 1;
 a();
 ```
 
-## 15 - Scope, ES6, and let
-Scope is where a variable is available in your code. And if it's truly a new variable, or a new copy.
+## 15 - Scope, ES6, and `let`
+**Scope** - where a variable is available in your code. And if it's truly a new variable, or a new copy.
 
 ## 16 - What About Asynchronous Callbacks
 **Asynchronous** - executed more than one at a time. What is happening inside JS engine is synchronous. Its just the browser is putting things asynchronously in the event queue.
@@ -101,10 +101,15 @@ Scope is where a variable is available in your code. And if it's truly a new var
 **Primitive type** - a type of data that represents a single value. That is, not an object.
 
 `undefined` - represents lack of existence. You shouldn't set a variable to `undefined` yourself.
+
 `null` - also represents lack of existence. You can set a variable to `null`.
+
 `boolean` - `true` or `false`.
+
 **Number** - floating point number (there's always some decimals).
+
 `string` - a sequence of characters in 'single' or "double quotes".
+
 **Symbol** - used in ES6.
 
 ## 19 - Conceptual Aside - Operators
@@ -112,9 +117,10 @@ Scope is where a variable is available in your code. And if it's truly a new var
 
 ## 20 - Operator Precedence and Associativity
 **Operator precedence** - which operator function gets called first on the same line of code. Functions are called in order of precedence (higher precedence wins).
+
 **Associativity** - what order operator functions get called in: left-to-right or right-to-left when functions have the same precedence.
 
-Operator precedence table: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+Operator precedence table: [https://developer.mozilla.org/Operator_Precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
 
 ## 21 - Conceptual Aside Coercion
 **Coercion** - converting a value from one type to another. This happens quite often in JavaScript because it's dynamically typed. For example adding a number to a string would result in number being converted to a string:
@@ -124,10 +130,14 @@ Operator precedence table: https://developer.mozilla.org/en-US/docs/Web/JavaScri
  ```
 
 ## 22 - Comparison Operators
-when `true` is coerced to number it is `1`
-when `false` is coerced to number it is `0`
-`null` is `0`
-`undefined` is `NaN`
+When `true` is coerced to number it is `1`.
+
+When `false` is coerced to number it is `0`.
+
+When `null` is coerced to number it is `0`.
+
+When `undefined` is coerced to number it is `NaN`.
+
 `===` is a strict comparison operator and doesn't do conversion. So it's the best practice to always use it to prevent strange bugs due to conversion.
 
 ## 23 - Existence and Booleans
@@ -148,7 +158,14 @@ Also worth mentioning that `false || true` returns `true.`
 
 ## 24 - Default Values
 If you pass two values to `||` operator it will return a first one which returns `true`.
-`var name = name || "your name"` - this pattern is used in many open source code. This way you can set a default parameter value in case no arguments are passed during invocation of a function.
+
+This pattern is used in many open source code:
+
+```javascript
+var name = name || "your name";
+``` 
+
+This way you can set a default parameter value in case no arguments are passed during invocation of a function.
 
 ## 25 - Framework Aside: Default Values
 When using a few libraries to avoid overwriting vars, most libraries use this pattern:
@@ -158,10 +175,12 @@ window.variableName = window.variableName || "String";
 ```
 
 ## 26 - Objects and the Dot
-Object can have a primitive(string, boolean) and that will be called a **property**.
-It can have another object and it will also be property.
+**Objects** are name value pairs that are sitting in memory and have references to other things inside them like properties and methods.
+
+Object can have a primitive(string, boolean) and that will be called a **property**. It can have another object and it will also be a property.
+
 Object can also contain a function and it is called a **method**.
-Objects are name value pairs that are sitting in memory and have references to other things inside them like properties and methods.
+
 
 ```javascript
 var person = new Object();
@@ -199,26 +218,29 @@ english.greet = 'hello';
 ```
 
 ## 29 - JSON and Object Literals
-**JSON** - JavaScript object notation is inspired by JS. In JSON property names must be wrapped in double quotes. 
+**JSON** - JavaScript object notation is inspired by JS. In JSON property names must be wrapped in double quotes.
+
 `JSON.stringify(objectLiteral)` - converts object to JSON.
+
 `JSON.parse()` - converts to a JavaScript object.
 
 ## 30 - Functions are Objects
 In JavaScript functions are objects.
+
 **First class functions** - everything you can do with other types you can do with functions. Assign them to variables, pass them around as parameters to other functions, you can create functions on the fly.
 
 Just like any object, function object resides in memory. Though, it's a special type of object because it has all the features of a normal object but has some other special properties. It's hidden special properties:
 
-**Name** - though it can be anonymous ant not have a name. 
+**Name** - though it can be anonymous ant not have a name.
+
 **Code property** - where the actual lines of code sit.
 
-The code that you write gets placed in the special property of the function object.
-So it isn't like the code you write *is* a function.
-The function *is* an object with other properties. And the code that you write is just one of those properties that you're adding onto it. What is special about that property that it's invocable. You can say run that code and that's when execution context creation and execution happens.
+The code that you write gets placed in the special property of the function object. So it isn't like the code you write *is* a function. The function *is* an object with other properties. And the code that you write is just one of those properties that you're adding onto it. What is special about that property that it's invocable. You can say run that code and that's when execution context creation and execution happens.
 
 It's important that you have this mental model of functions in your mind. You have to think of functions as objects whose code just happens to be one of the properties. 
-There are other things that functions can have attached to it. And it can be moved around and copied just like other object. 
-You have to think about functions as more than just containers of code.
+There are other things that functions can have attached to it. And it can be moved around and copied just like other object.
+
+You have to think about **functions as more than just containers of code**.
 
 ## 31 - Function Statements and Function Expressions
 **Expression** - a unit of code that results in a value. Statements just do work, bet expressions end up creating value. That value doesn't necessarily have to be saved to a variable.
@@ -243,16 +265,19 @@ var anonymousGreet = function() {
 }
 ```
 
-Remember functions are objects. So it creates an object on the fly and sets it equal to the variable `anonymousGreet`.
-So when your code runs in the execution phase, sees the first function it just says "yeah there is function" and does nothing, just keeps going. But when it sees a variable it results in a value of a function object being created.
+Remember functions are objects. So it creates an object on the fly and sets it equal to the variable `anonymousGreet`. So when your code runs in the execution phase, sees the first function it just says "yeah there is function" and does nothing, just keeps going. But when it sees a variable it results in a value of a function object being created.
 That's why you can call function statement before it but function expression will throw an error as "undefined is not a function" because that function is not yet created.
 
 ## 32 - Conceptual Aside By Value vs By Reference
-**By value**(primitives):
+**By value** (primitives):
 
-`var a = 3; b = a;` when you set b equals to a, equals operator sees these are primitives creates a new spot in memory and makes a copy of it. `b` and `a` will be both `3` but they are copies sitting on separate spots in memory. So if I change `a = 5;` it doesn't affect `b`, it is still `3`, because after making a copy these values are on their own.
+```javascript
+var a = 3; b = a;
+``` 
 
-**By reference** (all objects including functions)
+When you set `b` equals to `a`, equals operator sees these are primitives creates a new spot in memory and makes a copy of it. `b` and `a` will be both `3` but they are copies sitting on separate spots in memory. So if I change `a = 5` it doesn't affect `b`, it is still `3`, because after making a copy these values are on their own.
+
+**By reference** (all objects including functions):
 
 ```javascript
 var c = {greetings: 'hi'};
@@ -260,22 +285,25 @@ var d;
 d = c;
 ```
 Equals operator sees there is an object so it simply points to the same spot in memory.
-After changing a value of an object `c.greetings = 'hello';` `d` would change as well.
+
+After changing a value of an object: `c.greetings = 'hello'` `d` would change as well.
 
 **Mutate** means change something.
 
-##33 - Objects, Functions, and 'this'
+## 33 - Objects, Functions, and `this`
 
 `this` inside a function points to global object.
-`this` inside a method points to that object from which is called. Left of the dot rule.
 
-But this inside a function which is inside a method will point to the global object.
+`this` inside a method points to that object from which it is called. Left of the dot rule.
+
+But `this` inside a function which is inside a method will point to the global object.
+
 With ES5 JavaScript using `var` you could solve this by setting inside a method `var _this = this;` which is a very common pattern.
 
 ## 34 - Conceptual Aside - Arrays  - Collections of Anything
 **Arrays** can hold a mix of anything: functions, primitives, objects.
 
-## 35 - 'arguments' and spread
+## 35 - `arguments` and spread
 **Arguments** are the parameters you pass to a function. JS creates a keyword of the same name which is an array-like that contains all parameters that you passed.
 
 In ES6 we can do: `function greet(firstname, ...other)` and `other` will be an array that contains the rest of the arguments.
@@ -308,6 +336,7 @@ var firstname = 'John';
 ```
 
 Function statements can't be anonymous.
+
 Everything inside a parenthesis is considered expression.
 
 ## 41 - Framework Aside IIFEs and Safe Code
@@ -343,7 +372,7 @@ Every time function is called it creates a new execution context and its variabl
 ## 45 - Closures And Callbacks
 **Callback function** - a function you give to another function to be run when the other function is finished.
 
-## 46 - call(), apply(), and bind()
+## 46 - `call()`, `apply()`, and `bind()`
 Because functions are objects, all functions have access to built-in `call()`, `bind()` and `apply()` methods.
 
 `bind()` creates a copy of a function it is attached to. I.e `name.bind(obj)` inherits `this` from the object you pass to it as a parameter. `bind()` can also bind permanent parameters to the function: `name.bind(this, 1, 2)`. So when you call `name()` it will have parameters `1` and `2` already passed.
@@ -399,7 +428,7 @@ All objects, functions, arrays have their prototype pointing to the special obje
 
 It is not a built in feature but many libraries have it and ES6 have `extends`.
 
-## 53 - Functions Contructors, 'new' And The History Of JavaScript
+## 53 - Functions Contructors, `new` And The History Of JavaScript
 `new Function()` creates an empty object and invokes a function. It also changes what `this` points to. It points to that empty object.
 `new` lets construct an object via function.
 
@@ -407,39 +436,60 @@ It is not a built in feature but many libraries have it and ES6 have `extends`.
 
 `new` keyword creates an object and functions constructors are used for adding properties and methods to that object.
 
-## 54 - Function Constructors and '.prototype'
+## 54 - Function Constructors and `.prototype`
 `.prototype` is a property that sits in every function in JavaScript but unless you use a function constructor with `new` operator it is never used. A `.prototype` is **not** *the* prototype of a function object. It is only a prototype of objects created with a `new` keyword.
 
 It's better to put your methods on the `prototype` to save memory space and it gets shared between all objects.
 
-## 55 - Dangerous Aside 'new' and functions 
-## 56 - Conceptual Aside Built-In Function Constructors 
-## 57 - Dangerous Aside Built-In Function Constructors 2 
-## 58 - Dangerous Aside Arrays and for..in 
-## 59 - Object.create and Pure Prototypal Inheritance 
-## 60 - ES6 and Classes 
+## 55 - Dangerous Aside `new` and functions
+
+## 56 - Conceptual Aside Built-In Function Constructors
+
+## 57 - Dangerous Aside Built-In Function Constructors 2
+
+## 58 - Dangerous Aside Arrays and `for`..`in`
+
+## 59 - `Object.create` and Pure Prototypal Inheritance
+
+## 60 - ES6 and Classes
+
 ## 61 - Initialization
-Large arrays of objects is useful for testing and initialization 
-## 62 - 'typeof' , 'instanceof', and Figuring Out What Something Is
+Large arrays of objects is useful for testing and initialization
+
+## 62 - `typeof`, `instanceof`, and Figuring Out What Something Is
 typeof returns a type of variable
 array is returned as an object
 e instanceof Person - return true if e is down the prototype chain
-typeof null returns an object - it's a bug 
+typeof null returns an object - it's a bug
+
 ## 63 - Strict Mode
 "use strict"; - in this mode you must declare var first to use it. In not strict mode if you forget to type var, it will still be created on global object window.
-You can use use strict at the top of the document or at the top of a function to use strict only inside it's execution context 
+You can use use strict at the top of the document or at the top of a function to use strict only inside it's execution context
+
 ## 64 - Learning From Other's Good Code
-Reading good open source code of libraries and apps you're using is valuable way of learning. 
+Reading good open source code of libraries and apps you're using is valuable way of learning.
+
 ## 65 - Deep Dive into Source Code jQuery - Part 1
-jQuery has some good code you could borrows for your own projects. I has been developed and watched by many developers so it probably has some of the best methods and practices. 
-## 66 - Deep Dive into Source Code jQuery - Part 2 
-## 67 - Deep Dive into Source Code jQuery - Part 3 
-## 68 - Requirements 
-## 69 - Structuring Safe Code 
-## 70 - Our Object and Its Prototype 
-## 71 - Properties and Chainable Methods 
-## 72 - Adding jQuery Support 
-## 73 - Good Commenting 
-## 74 - A Side Note 
-## 76 - TypeScript, ES6, and Transpiled Languages 
-## 77 - Existing and Upcoming Features 
+jQuery has some good code you could borrows for your own projects. I has been developed and watched by many developers so it probably has some of the best methods and practices.
+
+## 66 - Deep Dive into Source Code jQuery - Part 2
+
+## 67 - Deep Dive into Source Code jQuery - Part 3
+
+## 68 - Requirements
+
+## 69 - Structuring Safe Code
+
+## 70 - Our Object and Its Prototype
+
+## 71 - Properties and Chainable Methods
+
+## 72 - Adding jQuery Support
+
+## 73 - Good Commenting
+
+## 74 - A Side Note
+
+## 76 - TypeScript, ES6, and Transpiled Languages
+
+## 77 - Existing and Upcoming Features
