@@ -1,5 +1,5 @@
 # JavaScript: Understanding the Weird Parts
-These are my notes from the briliant course by Tony Alicea about learning in-depth JavaScript. If you want to learn how JavaScript engine works under the hood I highly recommend you to check out this course which you can find at [Udemy](https://www.udemy.com/understand-javascript/).
+These are my notes from the briliant course by [Tony Alicea](https://twitter.com/anthonypalicea) about learning in-depth JavaScript. If you want to learn how JavaScript engine works under the hood I highly recommend you to check out this course which you can find at [Udemy](https://www.udemy.com/understand-javascript/).
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -181,12 +181,12 @@ a();
 
 Primitives:
 
--- `undefined` - represents lack of existence. You shouldn't set a variable to `undefined` yourself.
--- `null` - also represents lack of existence. You can set a variable to `null`.
--- `boolean` - `true` or `false`.
--- **Number** - floating point number (there's always some decimals).
--- `string` - a sequence of characters in 'single' or "double quotes".
--- **Symbol** - used in ES6.
+- `undefined` - represents lack of existence. You shouldn't set a variable to `undefined` yourself.
+- `null` - also represents lack of existence. You can set a variable to `null`.
+- `boolean` - `true` or `false`.
+- **Number** - floating point number (there's always some decimals).
+- `string` - a sequence of characters in 'single' or "double quotes".
+- **Symbol** - used in ES6.
 
 ## 19 - Conceptual Aside - Operators
 **Operator** - a special function that is written differently. Generally operators take two parameters and return result.
@@ -455,8 +455,8 @@ Because functions are objects, all functions have access to built-in `call()`, `
 
 `call()` invokes the function but also lets you to decide what `this` variable will be, by passing an object: `call(object, 'param', 'param2')`. Unlike bind, it executes the function instead of copying it.
 
-`apply()` is almost the same as `call()` but instead you need to pass an array as a parameter: `.apply(object, [parameters]);
-`
+`apply()` is almost the same as `call()` but instead you need to pass an array as a parameter: `.apply(object, [parameters])`
+
 In practice, you can use `call()` and `apply()` to borrow methods/functions from objects and use on another object with the same property names.
 
 **Function currying** - creating a copy of a function but with some preset parameters.
@@ -487,14 +487,17 @@ Open source libraries are great educational tools. So take the time to read some
 **Inheritance** - one object gets access to properties and methods of another object.
 
 **Classical inheritance** is the way it's been done a long time, it's what Java, C# uses. It's very verbose.
+
 **Prototypal** is much simpler, flexible, extensible, easy to understand.
 
 ## 50 - Understanding The Prototype
 All objects have built-in prototype property, including functions. Each prototype can also have its own prototype.
+
 Each object inherits properties and methods of other objects through a prototype. So if you call a property on one object and it doesn't find it there it goes the prototype chain and looks for it on a prototype.
 
 ## 51 - Everything is an Object (Or a primitive)
 Functions, arrays, and objects all have their prototype that's why we say that everything is an object in JavaScript.
+
 All objects, functions, arrays have their prototype pointing to the special object where you can access methods like `call()`, `bind()`, `push()`. 
 
 ## 52 - Reflection and Extend
@@ -506,6 +509,7 @@ It is not a built in feature but many libraries have it and ES6 have `extends`.
 
 ## 53 - Functions Contructors, `new` And The History Of JavaScript
 `new Function()` creates an empty object and invokes a function. It also changes what `this` points to. It points to that empty object.
+
 `new` lets construct an object via function.
 
 **Function constructors** - a normal function that is used to construct objects. The `this` variable points to a new empty object, and that object is returned from the function automatically.
@@ -513,9 +517,11 @@ It is not a built in feature but many libraries have it and ES6 have `extends`.
 `new` keyword creates an object and functions constructors are used for adding properties and methods to that object.
 
 ## 54 - Function Constructors and `.prototype`
-`.prototype` is a property that sits in every function in JavaScript but unless you use a function constructor with `new` operator it is never used. A `.prototype` is **not** *the* prototype of a function object. It is only a prototype of objects created with a `new` keyword.
+`.prototype` is a property that sits in every function in JavaScript but unless you use a function constructor with `new` operator it is never used.
 
-It's better to put your methods on the `prototype` to save memory space and it gets shared between all objects.
+A `.prototype` is **not** *the* prototype of a function object. It is only a prototype of objects created with a `new` keyword.
+
+It's better to put your methods on the `prototype` to save memory space as it gets shared between all objects.
 
 ## 55 - Dangerous Aside `new` and functions
 
