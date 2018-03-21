@@ -86,10 +86,10 @@ These are my notes from the briliant course by [Tony Alicea](https://twitter.com
  
 ## 5 - Conceptual Aside - Syntax Parser, Execution Context, and Lexical Environment
 **Syntax parser** - a program that reads your code and determines what it does and if its grammar/syntax is valid.
-When you write JavaScript it isn't directly telling computer what to do. You're writing code, but then someone else built programs that convert your JS into something that computer can understand. Those programs are called **compilers** or interpreters. 
-They go character by character and translate your code into a set of instructions. 
-Important to understand is that during that process programmers who wrote that compiler can choose to do extra stuff. 
-Your code is not what actually is given to a computer but a translation of it.
+
+When you write JavaScript it isn't directly telling computer what to do. You're writing code, but then someone else built programs that convert your JS into something that computer can understand. Those programs are called compilers or interpreters.
+
+**Compilers** go character by character and translate your code into a set of instructions. Important to understand is that during that process programmers who wrote that compiler can choose to do extra stuff. Your code is not what actually is given to a computer but a translation of it.
 
 **Lexical environment** - where something sits physically in the code you write and what surrounds it. In JavaScript where you write something is important.
 
@@ -99,6 +99,7 @@ Execution context contains your running code, but it can also contain things bey
  
 ## 6 - Conceptual Aside - Name-Value Pairs and Objects
 **Name value pair** - a name which maps to a unique value. The name may be defined more than once, but can only have one value in any given execution context.
+
 **Object** - is a collection of name value pairs. 
  
 ## 7 - The Global Environment and The Global Object
@@ -115,10 +116,10 @@ function b() {
 }
 ```
 
-This is how it works.
-When parser runs through code it recognizes where you created variables and functions and it sets up memory space for them. So before your code begins to be executed, JS engine has already set aside memory space for all the variables and functions you created. So when the code begins to execute line by line it can access it.
+When parser runs through code it recognizes where you created variables and functions and it sets up memory space for them. So before your code begins to be executed, JS engine has already set aside memory space for all the variables and functions you created. When the code begins to execute line by line it can access it.
+
 However, for variables JS engine puts a placeholder `undefined`, because it doesn't know what it's value will ultimately end up being until it starts executing that line of
-code. 
+code.
  
 ```javascript
 console.log(a);
@@ -127,7 +128,7 @@ var a = 'Hello World!';
 ```
 
 ## 9 - Conceptual Aside - Javascript and undefined
-`undefined` - is a special value, a keyword that JavaScript sets up to all variables during a creation phase of execution context. 
+**`undefined`** - is a special value, a keyword that JavaScript sets up to all variables during a creation phase of execution context. 
 
 ## 10 - The Execution Context - Code Execution
 In the execution phase JS engine runs your code line by line. 
@@ -180,9 +181,9 @@ a();
 
 Primitives:
 
-- `undefined` - represents lack of existence. You shouldn't set a variable to `undefined` yourself.
-- `null` - also represents lack of existence. You can set a variable to `null`.
-- `boolean` - `true` or `false`.
+- **`undefined`** - represents lack of existence. You shouldn't set a variable to `undefined` yourself.
+- **`null`** - also represents lack of existence. You can set a variable to `null`.
+- **`boolean`** - `true` or `false`.
 - **Number** - floating point number (there's always some decimals).
 - **String** - a sequence of characters in 'single' or "double quotes".
 - **Symbol** - used in ES6.
@@ -450,11 +451,11 @@ Every time function is called it creates a new execution context and its variabl
 ## 46 - `call()`, `apply()`, and `bind()`
 Because functions are objects, all functions have access to built-in `call()`, `bind()` and `apply()` methods.
 
-`bind()` creates a copy of a function it is attached to. E.g. `name.bind(obj)` inherits `this` from the object you pass to it as a parameter. `bind()` can also bind permanent parameters to the function: `name.bind(this, 1, 2)`. So when you call `name()` it will have parameters `1` and `2` already passed.
+**`bind()`** creates a copy of a function it is attached to. E.g. `name.bind(obj)` inherits `this` from the object you pass to it as a parameter. `bind()` can also bind permanent parameters to the function: `name.bind(this, 1, 2)`. So when you call `name()` it will have parameters `1` and `2` already passed.
 
-`call()` invokes the function but also lets you to decide what `this` variable will be, by passing an object: `call(object, 'param', 'param2')`. Unlike bind, it executes the function instead of copying it.
+**`call()`** invokes the function but also lets you to decide what `this` variable will be, by passing an object: `call(object, 'param', 'param2')`. Unlike bind, it executes the function instead of copying it.
 
-`apply()` is almost the same as `call()` but instead you need to pass an array as a parameter: `.apply(object, [parameters])`
+**`apply()`** is almost the same as `call()` but instead you need to pass an array as a parameter: `.apply(object, [parameters])`
 
 In practice, you can use `call()` and `apply()` to borrow methods/functions from objects and use on another object with the same property names.
 
@@ -507,7 +508,7 @@ All objects, functions, arrays have their prototype pointing to the special obje
 It is not a built in feature but many libraries have it and ES6 have `extends`.
 
 ## 53 - Functions Contructors, `new` And The History Of JavaScript
-`new Function()` creates an empty object and invokes a function. It also changes what `this` points to. It points to that empty object.
+**`new Function()`** creates an empty object and invokes a function. It also changes what `this` points to. It points to that empty object.
 
 `new` lets construct an object via function.
 
@@ -516,7 +517,7 @@ It is not a built in feature but many libraries have it and ES6 have `extends`.
 `new` keyword creates an object and functions constructors are used for adding properties and methods to that object.
 
 ## 54 - Function Constructors and `.prototype`
-`.prototype` is a property that sits in every function in JavaScript but unless you use a function constructor with `new` operator it is never used.
+**`.prototype`** is a property that sits in every function in JavaScript but unless you use a function constructor with `new` operator it is never used.
 
 A `.prototype` is **not** *the* prototype of a function object. It is only a prototype of objects created with a `new` keyword.
 
@@ -595,9 +596,9 @@ JavaScript has classes in ES6. However, it is not like a `class` in other langua
 Large arrays of objects are useful for testing and initialization before you have an actual data to pull from, like a JSON file.
 
 ## 62 - `typeof`, `instanceof`, and Figuring Out What Something Is
-`typeof` is an operator (essentially a function) that excepts a parameter and returns a string.
+**`typeof`** is an operator (essentially a function) that excepts a parameter and returns a string.
 
-`instanceof` will tell you if it has something in its prototype chain by returning a boolean.
+**`instanceof`** will tell you if it has something in its prototype chain by returning a boolean.
 
 ```javascript
 var a = 3;
@@ -632,7 +633,7 @@ console.log(typeof z); // returns a 'function'
 ## 63 - Strict Mode
 JavaScript is a more liberal of what it allows.
 
-`"use strict";` - enforces more strict rules. E.g. in this mode you must declare var first to use it. In not strict mode if you forget to type `var`, it will still be created on the global object `window`.
+**`"use strict";`** - enforces more strict rules. E.g. in this mode you must declare var first to use it. In not strict mode if you forget to type `var`, it will still be created on the global object `window`.
 
 You can use use strict at the top of the document or at the top of a function to use strict only inside it's execution context.
 
