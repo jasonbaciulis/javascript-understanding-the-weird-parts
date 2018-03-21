@@ -503,7 +503,7 @@ All objects, functions, arrays have their prototype pointing to the special obje
 ## 52 - Reflection and Extend
 **Reflection** - an object can look at itself, listing and changing its properties and methods.
 
-`extend(obj, obj2, obj3)` takes all properties and methods of given objects and shares them between those objects.
+`extend(obj, obj2, obj3)` takes all properties and methods of given objects and passes them to the first object.
 
 It is not a built in feature but many libraries have it and ES6 have `extends`.
 
@@ -645,11 +645,17 @@ It may sound as fun as reading an encyclopedia, but you don't need to spend hour
 This is a great way to learn advanced patterns and concepts in JavaScript. So make a practice to occasionally look at the source code of the library or framework you're using.
 
 ## 65 - Deep Dive into Source Code jQuery - Part 1
-jQuery has some good code you could borrow for your own projects. I has been developed and watched by many developers so it probably has some of the best methods and practices.
+When we're reading code we are not trying to understand how every feature is implemented. First, we'll try to see if we can read the code and learn how it is structured. And if we can learn some techniques and borrow some ideas.
 
 ## 66 - Deep Dive into Source Code jQuery - Part 2
+jQuery has some good code you could borrow for your own projects. It has been developed and watched by many developers so it has some of the best methods and practices.
+
+Inside jQuery there is Sizzle CSS Selector library for handling selectors.
 
 ## 67 - Deep Dive into Source Code jQuery - Part 3
+**Method chaining** - calling one method after another, and each method affects the parent object.
+
+So `obj.method1().method2()` where both methods end up with `this` variable pointing at `obj`.
 
 ## 68 - Requirements
 
