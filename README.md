@@ -70,12 +70,7 @@ These are my notes from the briliant course by [Tony Alicea](https://twitter.com
 - [66 - Deep Dive into Source Code jQuery - Part 2](#66---deep-dive-into-source-code-jquery---part-2)
 - [67 - Deep Dive into Source Code jQuery - Part 3](#67---deep-dive-into-source-code-jquery---part-3)
 - [68 - Requirements](#68---requirements)
-- [69 - Structuring Safe Code](#69---structuring-safe-code)
-- [70 - Our Object and Its Prototype](#70---our-object-and-its-prototype)
-- [71 - Properties and Chainable Methods](#71---properties-and-chainable-methods)
-- [72 - Adding jQuery Support](#72---adding-jquery-support)
 - [73 - Good Commenting](#73---good-commenting)
-- [74 - A Side Note](#74---a-side-note)
 - [76 - TypeScript, ES6, and Transpiled Languages](#76---typescript-es6-and-transpiled-languages)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -658,18 +653,10 @@ Inside jQuery there is Sizzle CSS Selector library for handling selectors.
 So `obj.method1().method2()` where both methods end up with `this` variable pointing at `obj`.
 
 ## 68 - Requirements
-
-## 69 - Structuring Safe Code
-
-## 70 - Our Object and Its Prototype
-
-## 71 - Properties and Chainable Methods
-
-## 72 - Adding jQuery Support
+First of all, before building any application let's think of the requirements. What this app/library should do?
 
 ## 73 - Good Commenting
-
-## 74 - A Side Note
+Remember to write good comments for your code. Because even if you are the sole developer for a project you may need to come back after a year and you'll have to figure it out how everything works like it was someone else's code.
 
 ## 76 - TypeScript, ES6, and Transpiled Languages
 **Transpile** - convert the syntax of one programming language, to another.
