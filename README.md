@@ -163,6 +163,8 @@ a();
 ## 15 - Scope, ES6, and `let`
 **Scope** - where a variable is available in your code. And if it's truly a new variable, or a new copy.
 
+**`let`** - allows JS engine block scoping. During execution context that variable is still placed in memory and set to `undefined`, however, you're not allowed to use it until the line of code is run during the execution phase. So if you try to use a variable before, you'll get an error. Also, it is declared within a block. A block is usually defined by `{}` (function, if statement etc). So if you're running `let` inside a loop a new variable will be placed in memory after each iteration.
+
 ## 16 - What About Asynchronous Callbacks
 **Asynchronous** - executed more than one at a time. What is happening inside JS engine is synchronous. Its just the browser is putting things asynchronously in the event queue.
 
