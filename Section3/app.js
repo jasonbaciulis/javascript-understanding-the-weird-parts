@@ -1,3 +1,11 @@
-var a = 3 + 4 * 5
+var a = 0;
+var b = false;
 
-console.log(a);
+function == (a,b)
+function === (a,b)
+
+if (a === b) {
+    console.log('They are  equal!');
+} else {
+    console.log('nope, not equal');
+};

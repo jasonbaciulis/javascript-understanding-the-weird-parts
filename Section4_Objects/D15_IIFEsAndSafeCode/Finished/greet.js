@@ -1,0 +1,1 @@
+var greeting = 'Hola';
