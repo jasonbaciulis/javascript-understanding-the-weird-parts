@@ -6,7 +6,9 @@ var firstname = 'John';
     var greeting = 'Hello';
     console.log(greeting + ' ' + name);
     
-}(firstname)); // IIFE
+}('John')); // IIFE
+
+console.log(greeting);
 
 
 
