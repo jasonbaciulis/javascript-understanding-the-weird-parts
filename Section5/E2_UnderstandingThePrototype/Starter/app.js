@@ -14,14 +14,20 @@ var john = {
 // dont do this
 
 john.__proto__ = person;
-
 console.log(john.getFullName());
 console.log(john.firstname);
 
 var jane = {
-    firstname: 'Jane'
+    firstname: 'Jane'   
 }
 
 jane.__proto__ = person;
-
 console.log(jane.getFullName());
+
+person.getFormalFullName = function() {
+    return this.lastname + ', ' + this.firstname;   
+}
+
+console.log(john.getFormalFullName());
+console.log(jane.getFormalFullName());
+
