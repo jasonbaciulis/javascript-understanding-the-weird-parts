@@ -1,0 +1,5 @@
+(function(global, $) {
+    
+    
+    
+}(window, jQuery));
