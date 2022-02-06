@@ -316,7 +316,7 @@ There are other things that functions can have attached to it. And it can be mov
 You have to think about **functions as more than just containers of code**.
 
 ## 31 - Function Statements and Function Expressions
-**Expression** - a unit of code that results in a value. Statements just do work, bet expressions end up creating value. That value doesn't necessarily have to be saved to a variable.
+**Expression** - a unit of code that results in a value. Statements just do work, but expressions end up creating value. That value doesn't necessarily have to be saved to a variable.
 
 E.g. `1 + 2` is a function expression that return a value of `3`. Do you remember how we covered that `+` operator is a function?
 
